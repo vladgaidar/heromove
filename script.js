@@ -57,3 +57,40 @@ if (footerBrand && 'IntersectionObserver' in window) {
   }, { threshold: 0.35 });
   logoObserver.observe(footerBrand);
 }
+
+
+// Decode all layers before starting a synchronized cycle; pause offscreen.
+const chessScene = document.querySelector('.hero-scene');
+const sceneToggle = document.querySelector('.scene-toggle');
+if (chessScene) {
+  let sceneVisible = false;
+  let manuallyPaused = false;
+  let layersReady = false;
+  const syncScene = () => {
+    if (!layersReady) return;
+    chessScene.classList.add('scene-ready');
+    chessScene.classList.toggle('scene-playing', !motionPreference.matches);
+    chessScene.classList.toggle('scene-paused', manuallyPaused || !sceneVisible || document.hidden);
+    if (sceneToggle) {
+      sceneToggle.hidden = motionPreference.matches;
+      sceneToggle.setAttribute('aria-pressed', String(manuallyPaused));
+      sceneToggle.textContent = manuallyPaused ? 'Продовжити анімацію' : 'Пауза анімації';
+    }
+  };
+  sceneToggle?.addEventListener('click', () => { manuallyPaused = !manuallyPaused; syncScene(); });
+  motionPreference.addEventListener('change', syncScene);
+  document.addEventListener('visibilitychange', syncScene);
+  const layerUrls = ['assets/animation/hand-grip.png', 'assets/animation/hand-release.png', 'assets/animation/pawn.png', 'assets/animation/queen.png'];
+  Promise.all(layerUrls.map(src => {
+    const img = new Image(); img.src = src; return img.decode();
+  })).then(() => {
+    layersReady = true;
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(entries => {
+        sceneVisible = entries.some(entry => entry.isIntersecting);
+        syncScene();
+      }, { threshold: 0 });
+      observer.observe(chessScene);
+    } else { sceneVisible = true; syncScene(); }
+  }).catch(() => { /* Retain the approved static illustration if a layer fails. */ });
+}
