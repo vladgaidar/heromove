@@ -8,12 +8,14 @@
   <title>Хід Героя — шаховий турнір пам’яті</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans:wght@500;600;700;800;900&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="preload" href="assets/fonts/namu-1960.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="brand.css">
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="#top" aria-label="Хід Героя — на початок"><img src="assets/logo-dark.png" alt="Хід Героя"></a>
+    <a class="brand" href="#top" aria-label="Хід Героя — на початок"><img src="assets/logo-dark.png" alt="Хід Героя" width="863" height="338"></a>
     <button class="menu" aria-expanded="false" aria-controls="nav" aria-label="Відкрити меню"><span></span><span></span></button>
     <nav id="nav">
       <a href="#history">Наша історія</a><a href="#partners">Партнери</a><a href="#contact">Контакти</a>
@@ -25,10 +27,55 @@
   </header>
   <main id="top">
     <section class="hero">
+<svg class="hero-art" viewBox="0 0 1600 780" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="board-fade" x1="700" y1="440" x2="1460" y2="670" gradientUnits="userSpaceOnUse">
+      <stop stop-color="white" stop-opacity="0"/><stop offset=".35" stop-color="white" stop-opacity=".6"/><stop offset="1" stop-color="white"/>
+    </linearGradient>
+    <mask id="board-mask"><rect width="1600" height="780" fill="url(#board-fade)"/></mask>
+    <linearGradient id="pawn-tone" x1="1060" y1="400" x2="1177" y2="430" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#670001"/><stop offset=".42" stop-color="#670001"/><stop offset="1" stop-color="#2c2a2b"/>
+    </linearGradient>
+  </defs>
+  <g class="chess-board" mask="url(#board-mask)">
+    <!-- The projected board uses one shared grid for squares and movement. -->
+    <g transform="matrix(76 -15 40 32 720 450)">
+      <path class="board-wash" d="M0 0H8V8H0Z"/>
+      <path class="board-square" d="M0 0h1v1h-1Z"/><path class="board-square" d="M2 0h1v1h-1Z"/><path class="board-square" d="M4 0h1v1h-1Z"/><path class="board-square" d="M6 0h1v1h-1Z"/><path class="board-square" d="M1 1h1v1h-1Z"/><path class="board-square" d="M3 1h1v1h-1Z"/><path class="board-square" d="M5 1h1v1h-1Z"/><path class="board-square" d="M7 1h1v1h-1Z"/><path class="board-square" d="M0 2h1v1h-1Z"/><path class="board-square" d="M2 2h1v1h-1Z"/><path class="board-square" d="M4 2h1v1h-1Z"/><path class="board-square" d="M6 2h1v1h-1Z"/><path class="board-square" d="M1 3h1v1h-1Z"/><path class="board-square" d="M3 3h1v1h-1Z"/><path class="board-square" d="M5 3h1v1h-1Z"/><path class="board-square" d="M7 3h1v1h-1Z"/><path class="board-square" d="M0 4h1v1h-1Z"/><path class="board-square" d="M2 4h1v1h-1Z"/><path class="board-square" d="M4 4h1v1h-1Z"/><path class="board-square" d="M6 4h1v1h-1Z"/><path class="board-square" d="M1 5h1v1h-1Z"/><path class="board-square" d="M3 5h1v1h-1Z"/><path class="board-square" d="M5 5h1v1h-1Z"/><path class="board-square" d="M7 5h1v1h-1Z"/><path class="board-square" d="M0 6h1v1h-1Z"/><path class="board-square" d="M2 6h1v1h-1Z"/><path class="board-square" d="M4 6h1v1h-1Z"/><path class="board-square" d="M6 6h1v1h-1Z"/><path class="board-square" d="M1 7h1v1h-1Z"/><path class="board-square" d="M3 7h1v1h-1Z"/><path class="board-square" d="M5 7h1v1h-1Z"/><path class="board-square" d="M7 7h1v1h-1Z"/>
+      <path class="board-lines" vector-effect="non-scaling-stroke" d="M0 0H8V8H0ZM1 0V8M2 0V8M3 0V8M4 0V8M5 0V8M6 0V8M7 0V8M0 1H8M0 2H8M0 3H8M0 4H8M0 5H8M0 6H8M0 7H8"/>
+    </g>
+  </g>
+
+  <g class="chess-move">
+    <ellipse class="pawn-contact" cx="1120" cy="548" rx="60" ry="13"/>
+    <g class="hero-pawn" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="1120" cy="538" rx="56" ry="14"/>
+      <path d="M1064 536C1064 525 1073 519 1086 512C1103 493 1107 456 1105 427L1097 413H1143L1135 427C1133 456 1137 493 1154 512C1167 519 1176 525 1176 536C1165 551 1075 551 1064 536Z"/>
+      <ellipse cx="1120" cy="413" rx="29" ry="7"/>
+      <path d="M1105 405L1109 392H1131L1135 405Z"/>
+      <circle cx="1120" cy="359" r="35"/>
+      <path class="pawn-highlight" d="M1099 345C1105 334 1115 331 1122 333M1113 436C1113 465 1108 492 1096 510M1077 533C1096 541 1142 542 1162 533M1100 412C1112 416 1129 416 1140 412"/>
+    </g>
+
+    <g class="hero-queen" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="1120" cy="538" rx="56" ry="14"/>
+      <path d="M1064 536C1064 525 1073 519 1086 512C1100 491 1105 443 1103 399H1137C1135 443 1140 491 1154 512C1167 519 1176 525 1176 536C1165 551 1075 551 1064 536Z"/>
+      <ellipse cx="1120" cy="401" rx="30" ry="7"/>
+      <path d="M1093 389L1086 372H1154L1147 389Z"/>
+      <ellipse cx="1120" cy="388" rx="30" ry="6"/>
+      <path d="M1086 372L1063 303L1092 329L1090 285L1110 320L1120 269L1130 320L1150 285L1148 329L1177 303L1154 372Z"/>
+      <circle cx="1063" cy="301" r="6"/><circle cx="1090" cy="283" r="6"/>
+      <circle cx="1120" cy="267" r="7"/><circle cx="1150" cy="283" r="6"/>
+      <circle cx="1177" cy="301" r="6"/>
+      <path class="pawn-highlight" d="M1094 363H1146M1099 388C1111 391 1129 391 1141 388M1112 420C1112 461 1107 490 1096 510M1077 533C1096 541 1142 542 1162 533M1091 343L1097 359"/>
+    </g>
+  </g>
+</svg>
+
       <div class="hero-inner">
         <p class="eyebrow">Хід Героя</p>
         <h1>Шаховий турнір пам’яті<br><em>полеглих Героїв України</em></h1>
-        <p class="lead">Присвячується тим, хто пройшов шлях Героя, тим, хто грав на дошці й у житті,<br>тим, хто боронив гідність, свободу та правду.</p>
+        <p class="lead">Присвячується тим, хто пройшов шлях Героя, тим, хто грав на дошці й у житті, тим, хто боронив гідність, свободу та правду.</p>
         <p class="memory-line">Вічна пам’ять і слава Героям.</p>
         <a class="scroll-cue" href="#history"><span></span> Гортати далі</a>
       </div>
@@ -50,7 +97,7 @@
         <div class="portrait placeholder"><span>Фото Героя</span></div>
         <div>
           <p class="eyebrow">Турнір пам’яті</p>
-          <h2>Сергій<br><span>Бондаренко</span></h2>
+          <h2>Сергій Миколайович<br><span>Бондаренко</span></h2>
           <p class="dates">15 вересня 1995 — 6 березня 2022</p>
           <p>Тут буде вступна історія про Сергія: ким він був, що любив, про що мріяв і яким його пам’ятають найближчі люди.</p>
         </div>
@@ -78,13 +125,23 @@
     </section>
 
     <section class="contact" id="contact">
-      <div><p class="eyebrow">Зворотний зв’язок</p><h2>Долучитися<br>до турніру</h2><p>Взяти участь, підтримати подію або поділитися історією.</p><a class="button" href="#">Заповнити форму <span>↗</span></a></div>
-      <div class="contact-list"><a href="#">@instagram <span>↗</span></a><a href="tel:+380777777777">+380 777 777 777 <span>↗</span></a><p>Додаткова інформація про участь, партнерство та організацію турніру.</p></div>
+      <div class="contact-copy">
+        <h2>Зворотний зв’язок</h2>
+        <p>Взяти участь, підтримати подію<br>або поділитися історією.</p>
+        <button class="button" type="button" disabled title="Посилання на форму участі буде додано">Заповнити форму <span aria-hidden="true">↗</span></button>
+        <p class="contact-note">Форма участі незабаром</p>
+      </div>
+      <div class="contact-list">
+        <div><span class="contact-channel">@instagram</span><p class="contact-note">Посилання буде додано</p></div>
+        <div><span class="contact-channel contact-phone">+380 777 777 777</span><p>Інформація про участь, партнерство<br>та організацію турніру.</p></div>
+      </div>
     </section>
   </main>
   <footer>
-    <img src="assets/logo-dark.png" alt="Хід Героя">
-    <nav><a href="#top">Головна</a><a href="#history">Наша історія</a><a href="#hero-2026">2026</a><a href="#partners">Партнери</a><a href="#contact">Контакти</a></nav>
+    <a class="footer-brand" href="#top" aria-label="Хід Героя — на початок">
+      <img src="assets/logo-dark.png" alt="Хід Героя" width="863" height="338">
+    </a>
+    <nav aria-label="Навігація внизу сторінки"><a href="#top">Головна</a><a href="#history">Наша історія</a><a href="#hero-2026">2026</a><a href="#partners">Партнери</a><a href="#contact">Контакти</a></nav>
     <span>© 2026 Хід Героя</span>
   </footer>
   <script src="script.js"></script>
