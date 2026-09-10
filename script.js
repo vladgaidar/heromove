@@ -80,7 +80,7 @@ if (chessScene) {
   sceneToggle?.addEventListener('click', () => { manuallyPaused = !manuallyPaused; syncScene(); });
   motionPreference.addEventListener('change', syncScene);
   document.addEventListener('visibilitychange', syncScene);
-  const layerUrls = ['assets/animation/hand-grip-pixel.png', 'assets/animation/hand-release-pixel.png', 'assets/animation/pawn.png', 'assets/animation/queen.png'];
+  const layerUrls = ['assets/animation/hand-grip-pixel.png', 'assets/animation/hand-release-pixel.png', 'assets/animation/pawn-engraved.png', 'assets/animation/queen-engraved.png'];
   Promise.all(layerUrls.map(src => {
     const img = new Image(); img.src = src; return img.decode();
   })).then(() => {

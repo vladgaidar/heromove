@@ -1,3 +1,13 @@
+# Perspective board and engraved pieces
+
+Current piece assets: pawn-engraved.png and queen-engraved.png, generated with the built-in image_gen tool from the supplied engraving reference. Prompt: isolated warm charcoal chess piece with ivory/tan etched crosshatching, matte finish, full silhouette, no other objects or text. Queen uses the reference scalloped crown and ball finial. Cyan surroundings were removed where present; native alpha is preserved. Visible bounds determine sizing so both bases finish at (690,1084).
+
+The board uses a one-point projective grid: t=row/8, width=700/(1-t/2), center x=772.352941; y=720+412.533333*t/(2-t). Near cells are larger than far cells. Start center (3.5,6.5)=(698.668731,1002.259649), destination (3.5,7.5)=(690,1084). Hand, piece and contact shadow share the same (8.668731,-81.740351) starting offset. Mobile centering no longer needs the old diamond-board correction.
+
+Validated placement, release, withdrawal and promotion on 1280px and 390px viewports; partner layout also checked at 320px. Partner mark uses the user-supplied monochrome asset without a card background.
+
+## Previous implementation notes
+
 # Current hand sprites
 
 - hand-grip-pixel.png and hand-release-pixel.png: complete 1536x1024 RGBA sprites generated with the built-in image_gen tool. These replace the old hand layers and separate sleeve overlay in the website.
