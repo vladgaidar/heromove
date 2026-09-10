@@ -1,3 +1,13 @@
+# Current hand sprites
+
+- hand-grip-pixel.png and hand-release-pixel.png: complete 1536x1024 RGBA sprites generated with the built-in image_gen tool. These replace the old hand layers and separate sleeve overlay in the website.
+- Generation prompt: matching engraved military hand grip/release poses, fine square digital camouflage in sand/olive/brown, fixed sleeve/wrist and canvas registration, no chess piece, clean full silhouette. Production sources requested a uniform cyan background after generated transparency produced a baked checkerboard. Cyan was converted to alpha with edge despill; no hand-drawn outline masks or sleeve clipping remain.
+- Release edit prompt: preserve sleeve, wrist and upper hand; separate index/thumb tips slightly while retaining the natural pinch direction, with the same flat cyan surroundings.
+- Grip/release crossfade is 120ms (41-42% of the 12-second loop) to avoid a prolonged double finger silhouette. Other animation timings and pawn/queen layers are unchanged.
+- Browser verification: desktop 1280px and mobile 390px, sampled placement, release, withdrawal and promotion frames. No horizontal overflow or SVG contour masks.
+
+## Archived implementation notes
+
 # Engraved chess animation
 
 Generated with the built-in image_gen tool. Layers are stored unchanged as PNGs; the release image is isolated by an SVG mask in index.html because its checkerboard was baked into the generated output.
@@ -15,3 +25,5 @@ Create a single isolated STAUNTON CHESS QUEEN on a genuinely transparent alpha P
 
 ## Ukrainian pixel sleeve
 hand-mm14.png was edited with the built-in image_gen tool. Prompt: replace only sleeve/cuff camouflage with Ukrainian MM-14 style angular digital pixel clusters in muted sand, grey olive, brown olive and dark earth; preserve engraved style, pose and 1536x1024 registration. The output has a baked checkerboard, so only the sleeve region is displayed, masked with the original grip alpha. One shared overlay keeps the camouflage consistent through grip and release without changing the original hand anatomy.
+
+The shared hand-treatment group scales both poses to 86% around (690,850), preserving pawn contact. CSS grading returns a muted sand/grey tone. Rectangular top/right fade masks soften only the source canvas boundaries; no silhouette masks are used.

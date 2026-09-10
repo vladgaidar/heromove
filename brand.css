@@ -154,8 +154,8 @@ footer { background: var(--sand); }
   40%,46% { transform: translate(0,0); opacity: 1; }
   60%,100% { transform: translate(900px,-450px); opacity: 0; }
 }
-@keyframes grip-release { 0%,40% { opacity: 1; } 46%,100% { opacity: 0; } }
-@keyframes fingers-open { 0%,40% { opacity: 0; } 46%,100% { opacity: 1; } }
+@keyframes grip-release { 0%,41% { opacity: 1; } 42%,100% { opacity: 0; } }
+@keyframes fingers-open { 0%,41% { opacity: 0; } 42%,100% { opacity: 1; } }
 @keyframes pawn-promote { 0%,60% { opacity: 1; } 70%,100% { opacity: 0; } }
 @keyframes queen-promote { 0%,60% { opacity: 0; transform: scaleY(.83); } 70%,100% { opacity: 1; transform: scaleY(1); } }
 @media(prefers-reduced-motion:no-preference) {
@@ -224,3 +224,6 @@ footer { background: var(--sand); }
   .partner-grid > .partner-card { transition: none; }
   .partner-grid > .partner-card:hover { transform: none; }
 }
+
+/* Muted sand/grey engraving tone shared by both hand poses. */
+.hand-treatment { filter: saturate(.28) sepia(.24) brightness(.98) contrast(.96); }
