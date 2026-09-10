@@ -34,6 +34,8 @@
   <img class="scene-fallback" src="assets/hero-engraving.png" alt="" width="1536" height="1024" fetchpriority="high">
   <svg class="scene-art" viewBox="0 0 1536 1254" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false">
     <defs>
+      <mask id="sleeve-alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="1536" height="1024" style="mask-type:alpha"><image href="assets/animation/hand-grip.png" width="1536" height="1024"/></mask>
+      <clipPath id="sleeve-region"><path d="M0 0H1536V1024H1284V590C1262 470 1194 340 1116 300C1062 270 1020 274 988 308H0Z"/></clipPath>
       <mask id="release-outline" maskUnits="userSpaceOnUse" x="0" y="0" width="1536" height="1024"><path fill="white" stroke="black" stroke-width="12" d="M1300 0H1536V400C1400 500 1330 570 1240 578L1173 527C1120 604 1080 647 1030 668C970 736 896 802 838 858C822 878 795 890 777 872C756 854 763 829 782 801L825 740C848 703 864 673 884 642C897 617 894 601 878 579C845 593 811 614 788 640L761 665C772 682 775 704 766 713C754 719 740 702 725 690C728 709 723 737 709 741C688 734 666 719 649 707C638 733 637 769 634 802C633 830 608 847 589 840C571 834 565 819 564 800L550 744L550 685C526 648 509 601 494 561C483 542 489 520 507 499C572 418 660 365 730 318C750 300 774 306 809 310L982 305C1030 221 1150 155 1300 0Z"/><path fill="black" d="M707 576L799 551L876 572L898 624L862 663L813 693L780 711L765 665L744 636L720 618Z"/></mask>
     </defs>
     <g class="scene-board" transform="matrix(86 -32 86 32 2 860)">
@@ -50,6 +52,7 @@
     <g class="hand-travel">
       <image class="grip-layer" href="assets/animation/hand-grip.png" width="1536" height="1024"/>
       <image class="release-layer" href="assets/animation/hand-release.png" width="1536" height="1024" mask="url(#release-outline)"/>
+      <g clip-path="url(#sleeve-region)" mask="url(#sleeve-alpha)"><image href="assets/animation/hand-mm14.png" width="1536" height="1024"/></g>
     </g>
   </svg>
 </div>
