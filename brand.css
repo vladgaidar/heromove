@@ -320,7 +320,12 @@ footer nav { margin-top: 50px; padding-inline: 6vw; }
   .biography-layout { grid-template-columns: minmax(0, 1fr); }
   .biography-layout .hero-portrait { position: static; }
 }
-@media(max-height:740px) { .biography-layout .hero-portrait { position: static; } }
+@media(min-width:901px) {
+  /* Fit the complete portrait below the header even on short laptop screens. */
+  .biography-layout .hero-portrait {
+    max-width: min(380px, calc((100svh - 128px) * .61948));
+  }
+}
 /* Consistent explanatory typography throughout the contact section. */
 .contact .contact-copy > p,
 .contact .contact-list p {
