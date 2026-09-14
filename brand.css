@@ -268,3 +268,71 @@ footer nav { margin-top: 50px; padding-inline: 6vw; }
   .hero-static h1 { font-size: clamp(2.7rem, 10.5vw, 3.8rem); }
   .hero-static-art { aspect-ratio: 1.22; }
 }
+
+.hero-portrait { display: block; width: 100%; height: auto; aspect-ratio: auto; }
+.biography { max-width: 850px; margin: 64px auto 0; line-height: 1.8; }
+.biography p { margin: 0 0 1.6em; }
+.flight-photo { aspect-ratio: auto; }
+.flight-photo img { display: block; width: 100%; height: auto; }
+.story-grid .flight-story { max-width: 850px; margin-inline: auto; width: 100%; }
+.flight-story p { max-width: none; line-height: 1.8; margin-bottom: 1.5em; }
+.flight-story p:last-child { font-family: var(--accent); color: var(--maroon); font-size: 1.3em; }
+@media(max-width:900px) { .hero-portrait { max-width: 480px; margin-inline: auto; } .biography { margin-top: 36px; } }
+
+/* Fill the portrait row with the opening biography and improve reading size. */
+.story-heading { grid-template-columns: .75fr 1.25fr; gap: clamp(32px, 5vw, 72px); align-items: start; }
+.story-heading h2 { font-size: clamp(3.2rem, 4.5vw, 5.2rem); }
+.story-heading > div > p:not(.dates), .biography, .flight-story p { font-size: 1.125rem; line-height: 1.75; }
+.story-heading > div > p:last-child { max-width: none; }
+.story-heading .dates { font-size: 1rem; margin: 24px 0; }
+.biography { max-width: 960px; margin-top: 36px; }
+.hero.hero-static { align-items: flex-start; padding-top: clamp(80px, 9vw, 145px); }
+.hero-static .hero-inner { width: 58%; transform: none; }
+.hero-static h1 { font-size: clamp(3.3rem, 5.2vw, 6.5rem); }
+.hero-static .lead { font-size: 1.125rem; line-height: 1.65; margin-top: 26px; }
+.hero-static .memory-line { font-size: .95rem; }
+.journey-art { height: clamp(280px, 38vw, 540px); object-fit: cover; object-position: center bottom; }
+@media(max-width:900px) {
+  .story-heading { grid-template-columns: 1fr; gap: 32px; }
+  .hero.hero-static { align-items: center; padding: 48px 0 0; }
+  .hero-static .hero-inner { width: 100%; }
+  .hero-static h1 { font-size: clamp(2.8rem, 8vw, 4.8rem); }
+  .hero-static .lead { font-size: 1.05rem; }
+  .journey-art { height: clamp(250px, 38vw, 360px); object-position: 57% bottom; }
+}
+@media(max-width:540px) {
+  .hero-static h1 { font-size: clamp(2.7rem, 10.8vw, 3.9rem); }
+  .story-heading > div > p:not(.dates), .biography, .flight-story p { font-size: 1.0625rem; }
+}
+
+/* One continuous reading column; the portrait accompanies it while scrolling. */
+.biography-layout { grid-template-columns: minmax(240px, .7fr) minmax(0, 1.3fr); }
+.biography-copy > p { margin: 0 0 1.4em; }
+.biography-copy > p:last-child { margin-bottom: 0; }
+.biography-layout .hero-portrait { position: sticky; top: 104px; max-width: 380px; margin-inline: auto; }
+.hero-portrait, .flight-photo img, .animal-photo {
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 18px, #000 calc(100% - 18px), transparent), linear-gradient(to bottom, transparent, #000 18px, #000 calc(100% - 18px), transparent);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to right, transparent, #000 18px, #000 calc(100% - 18px), transparent), linear-gradient(to bottom, transparent, #000 18px, #000 calc(100% - 18px), transparent);
+  mask-composite: intersect;
+}
+@media(max-width:900px) {
+  .biography-layout { grid-template-columns: minmax(0, 1fr); }
+  .biography-layout .hero-portrait { position: static; }
+}
+@media(max-height:740px) { .biography-layout .hero-portrait { position: static; } }
+/* Consistent explanatory typography throughout the contact section. */
+.contact .contact-copy > p,
+.contact .contact-list p {
+  font-family: var(--body);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--off);
+}
+
+.story-grid .animal-story { align-items: start; gap: clamp(32px, 5vw, 72px); }
+.animal-story p { font-size: 1.125rem; line-height: 1.75; margin: 0 0 1.4em; }
+.animal-photo { display: block; width: 100%; height: auto; aspect-ratio: auto; }
+@media(max-width:900px) { .animal-photo { max-width: 480px; margin-inline: auto; } }
+@media(max-width:540px) { .animal-story p { font-size: 1.0625rem; } }
