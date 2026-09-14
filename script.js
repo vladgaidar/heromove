@@ -7,7 +7,7 @@ const yearList=document.querySelector('.year-list');
 yearButton.addEventListener('click',()=>{const open=yearButton.getAttribute('aria-expanded')==='true';yearButton.setAttribute('aria-expanded',String(!open));yearList.classList.toggle('open',!open)});
 
 const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
-const revealTargets = document.querySelectorAll('.origin-copy, .origin-photo, .year-title, .story-heading > div, .wide-photo, .story-grid article, .final-story, .more-stories, .partners > .eyebrow, .partners > h2, .partners-intro, .partner-grid > div, .contact > div, footer nav, footer > span');
+const revealTargets = document.querySelectorAll('.origin-copy, .origin-photo, .year-title, .story-heading > div, .wide-photo, .story-grid article, .final-story, .more-stories, .partners > .eyebrow, .partners > h2, .partners-intro, .partner-grid > div, .contact > div');
 let revealObserver;
 function configureMotion() {
   revealObserver?.disconnect();

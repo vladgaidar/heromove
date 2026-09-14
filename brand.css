@@ -310,12 +310,7 @@ footer nav { margin-top: 50px; padding-inline: 6vw; }
 .biography-copy > p { margin: 0 0 1.4em; }
 .biography-copy > p:last-child { margin-bottom: 0; }
 .biography-layout .hero-portrait { position: sticky; top: 104px; max-width: 380px; margin-inline: auto; }
-.hero-portrait, .flight-photo img, .animal-photo {
-  -webkit-mask-image: linear-gradient(to right, transparent, #000 18px, #000 calc(100% - 18px), transparent), linear-gradient(to bottom, transparent, #000 18px, #000 calc(100% - 18px), transparent);
-  -webkit-mask-composite: source-in;
-  mask-image: linear-gradient(to right, transparent, #000 18px, #000 calc(100% - 18px), transparent), linear-gradient(to bottom, transparent, #000 18px, #000 calc(100% - 18px), transparent);
-  mask-composite: intersect;
-}
+
 @media(max-width:900px) {
   .biography-layout { grid-template-columns: minmax(0, 1fr); }
   .biography-layout .hero-portrait { position: static; }
@@ -341,3 +336,51 @@ footer nav { margin-top: 50px; padding-inline: 6vw; }
 .animal-photo { display: block; width: 100%; height: auto; aspect-ratio: auto; }
 @media(max-width:900px) { .animal-photo { max-width: 480px; margin-inline: auto; } }
 @media(max-width:540px) { .animal-story p { font-size: 1.0625rem; } }
+
+/* Tighter first-screen crop, retaining the visible board edge below the header. */
+@media(min-width:901px) {
+  .hero.hero-static { height: calc(100svh - 82px); min-height: 520px; max-height: 780px; padding-top: clamp(48px, 6vh, 80px); }
+  .hero-static-art { inset: 0 0 0 auto; width: 108%; max-width: none; object-position: right bottom; }
+}
+/* The image merges into the sand background; navigation sits on its wooden edge. */
+footer { display: grid; grid-template-columns: minmax(0, 1fr); padding-bottom: 24px; background: var(--sand); }
+footer .journey-art {
+  grid-area: 1 / 1;
+  width: 100%;
+  height: clamp(320px, 38vw, 540px);
+  object-fit: cover;
+  object-position: center bottom;
+  mask-image: linear-gradient(to bottom, transparent, #000 38%);
+}
+footer nav {
+  grid-area: 1 / 1;
+  align-self: end;
+  z-index: 1;
+  margin: 0 0 20px;
+  padding: 0 5vw;
+  justify-content: center;
+  gap: clamp(24px, 5vw, 80px);
+  font-size: clamp(1.3rem, 2.4vw, 2.2rem);
+  color: var(--sand);
+}
+footer nav a { display: inline-flex; align-items: center; min-height: 44px; text-shadow: 0 1px 5px #0008; }
+footer nav a:hover { color: white; }
+footer nav a:focus-visible { outline: 2px solid var(--sand); outline-offset: 4px; }
+footer > span { margin: 22px 0 0; text-align: center; }
+@media(max-width:900px) {
+  footer .journey-art { height: 340px; object-position: 57% bottom; }
+  footer nav { margin-bottom: 8px; gap: 0 22px; font-size: 1.25rem; padding: 8px 4vw; background: linear-gradient(transparent, #241e19b3); }
+}
+
+/* End the page on the board, with no separate light copyright strip. */
+footer { padding-bottom: 0; }
+footer > span {
+  grid-area: 1 / 1;
+  align-self: end;
+  z-index: 1;
+  margin: 0 0 5px;
+  color: var(--sand);
+  font-size: .6rem;
+  line-height: 1.2;
+}
+@media(max-width:900px) { footer nav { margin-bottom: 20px; } }
