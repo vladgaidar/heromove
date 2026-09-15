@@ -384,3 +384,75 @@ footer > span {
   line-height: 1.2;
 }
 @media(max-width:900px) { footer nav { margin-bottom: 20px; } }
+/* Preserve enough clear sky above the pieces on short desktop viewports. */
+.topbar { border-bottom-color: transparent; }
+@media(min-width:901px) {
+  .hero.hero-static {
+    min-height: clamp(560px, calc(320px + 25vw), 820px);
+    padding-top: clamp(28px, 4vh, 56px);
+  }
+  .hero-static-art {
+    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 100px);
+    mask-image: linear-gradient(to bottom, transparent, #000 100px);
+  }
+  .hero-static .lead { margin-top: 22px; }
+}
+/* Fit the board and header in one desktop viewport without fading the sleeve. */
+.topbar { border-bottom: 1px solid #2c2a2b26; }
+@media(min-width:901px) {
+  .hero.hero-static { height: calc(100svh - 82px); min-height: 0; max-height: 780px; padding-top: clamp(20px, 3vh, 44px); }
+  .hero-static-art { -webkit-mask-image: none; mask-image: none; }
+  .hero-static h1 { font-size: clamp(2.6rem, min(5.2vw, 8vh), 6.5rem); }
+  .hero-static .lead { font-size: clamp(.9rem, 2.15vh, 1.125rem); line-height: 1.55; margin-top: 18px; margin-bottom: 12px; }
+  .hero-static .memory-line { font-size: clamp(.75rem, 1.9vh, .95rem); margin-top: 8px; }
+}
+@media(min-width:901px) and (min-aspect-ratio:12/5) {
+  .hero-static-art { width: 100%; }
+}
+@media(min-width:901px) {
+  .hero.hero-static { padding-top: clamp(12px, 2vh, 28px); }
+  .hero-static h1 { font-size: clamp(3.2rem, min(5.2vw, 10vh), 6.5rem); }
+  .hero-static .lead { font-size: 1.125rem; line-height: 1.55; max-width: 760px; margin-top: 16px; margin-bottom: 10px; }
+  .hero-static .memory-line { font-size: .95rem; margin-top: 6px; }
+}
+.topbar, .hero.hero-static { background-color: #e2dad4; }
+@media(max-width:900px) { .topbar nav { background-color: #e2dad4; } }
+@media(min-width:901px) and (min-aspect-ratio:12/5) {
+  .hero-static-art {
+    width: 94%;
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 64px);
+    mask-image: linear-gradient(to right, transparent, #000 64px);
+  }
+}
+/* Reference-sized title with tighter spacing above the knight. */
+@media(min-width:901px) {
+  .hero-static h1 { font-size: clamp(3.2rem, min(5.2vw, 12vh), 6.5rem); }
+  .hero-static .lead { margin-top: 12px; margin-bottom: 8px; }
+  .hero-static .memory-line { margin-top: 0; }
+}
+@media(min-width:901px) and (min-aspect-ratio:12/5) {
+  .hero-static-art { width: 90%; }
+  .hero.hero-static { padding-top: 12px; }
+}
+/* Align the portrait and the following photograph to the same content edge. */
+.biography-layout .hero-portrait { margin-inline: 0; }
+.flight-photo { margin-inline: 0; }
+@media(max-width:900px) {
+  .biography-layout .hero-portrait { margin-inline: 0; }
+}
+
+/* Shared heading, with aligned text and photograph beneath it. */
+.story-grid .animal-story {
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+  column-gap: clamp(32px, 4vw, 64px);
+  row-gap: 24px;
+}
+.animal-heading { grid-column: 1 / -1; }
+.animal-heading h3 { margin-bottom: 0; }
+.animal-copy { min-width: 0; }
+.animal-story .animal-copy p { max-width: none; margin-bottom: 1em; }
+.animal-story .animal-photo { align-self: start; }
+@media(max-width:900px) {
+  .story-grid .animal-story { grid-template-columns: minmax(0, 1fr); }
+  .animal-story .animal-photo { margin-inline: 0; }
+}
