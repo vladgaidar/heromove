@@ -114,13 +114,17 @@ const crewPagination = document.createElement('div');
 crewPagination.className = 'crew-pagination';
 crewPagination.setAttribute('aria-label', 'Вибір портрета');
 let crewIndex = 2;
+let crewSuppressClickUntil = 0;
 const crewDots = crewCards.map((card, index) => {
   const dot = document.createElement('button');
   dot.type = 'button';
   dot.className = 'crew-dot';
   dot.setAttribute('aria-label', card.getAttribute('aria-label'));
   dot.addEventListener('click', () => showCrew(index));
-  card.addEventListener('click', () => showCrew(index));
+  card.addEventListener('click', () => {
+    if (Date.now() < crewSuppressClickUntil) return;
+    showCrew(index);
+  });
   crewPagination.append(dot);
   return dot;
 });
@@ -129,7 +133,12 @@ function showCrew(index) {
   crewIndex = (index + crewCards.length) % crewCards.length;
   crewCards.forEach((card, i) => {
     const slot = (i - crewIndex + 2 + crewCards.length) % crewCards.length;
+    const previousSlot = Number(card.style.getPropertyValue('--slot'));
+    const wraps = window.innerWidth > 600 && Math.abs(previousSlot - slot) > crewCards.length / 2;
+    // A wrapping portrait must not animate across and cover the other portraits.
+    if (wraps) card.style.transition = 'none';
     card.style.setProperty('--slot', slot);
+    if (wraps) { void card.offsetWidth; card.style.removeProperty('transition'); }
     card.classList.toggle('is-active', i === crewIndex);
     card.setAttribute('aria-pressed', String(i === crewIndex));
     crewDots[i].setAttribute('aria-current', String(i === crewIndex));
@@ -142,12 +151,21 @@ crewGallery.addEventListener('keydown', event => {
   event.preventDefault();
   showCrew(crewIndex + (event.key === 'ArrowRight' ? 1 : -1));
 });
-let crewTouchX = null;
-crewGallery.addEventListener('touchstart', event => { crewTouchX = event.touches[0].clientX; }, { passive: true });
-crewGallery.addEventListener('touchend', event => {
-  if (crewTouchX === null) return;
-  const delta = event.changedTouches[0].clientX - crewTouchX;
-  if (Math.abs(delta) > 35) showCrew(crewIndex + (delta < 0 ? 1 : -1));
-  crewTouchX = null;
+let crewTouchStart = null;
+crewGallery.addEventListener('touchstart', event => {
+  const touch = event.touches[0];
+  crewTouchStart = { x: touch.clientX, y: touch.clientY };
 }, { passive: true });
+crewGallery.addEventListener('touchend', event => {
+  if (!crewTouchStart) return;
+  const touch = event.changedTouches[0];
+  const dx = touch.clientX - crewTouchStart.x;
+  const dy = touch.clientY - crewTouchStart.y;
+  crewTouchStart = null;
+  if (Math.abs(dx) > 35 && Math.abs(dx) > Math.abs(dy)) {
+    crewSuppressClickUntil = Date.now() + 500;
+    showCrew(crewIndex + (dx < 0 ? 1 : -1));
+  }
+}, { passive: true });
+crewGallery.addEventListener('touchcancel', () => { crewTouchStart = null; });
 showCrew(crewIndex);

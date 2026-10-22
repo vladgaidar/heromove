@@ -708,3 +708,25 @@ body:has(#story-dialog[open]) { overflow: hidden; }
   .crew-controls { bottom: -2px; }
   .last-flight + .flight-photo { margin-top: 40px; }
 }
+
+/* Clipped offscreen cards must not move the viewport when focused. */
+.crew-gallery { overflow: clip; }
+
+/* On phones show one complete portrait without slivers of its neighbours. */
+@media(max-width:600px) {
+  .crew-card:not(.is-active) { visibility: hidden; opacity: 0; pointer-events: none; }
+  .crew-card.is-active { visibility: visible; }
+}
+
+/* Crossfade mobile portraits in place rather than sliding across the viewport. */
+@media(max-width:600px) {
+  .crew-gallery .crew-card {
+    left: 14%; transform: none;
+    transition: opacity .35s ease, visibility .35s;
+  }
+  .crew-gallery .crew-card:not(.is-active) { opacity: 0; visibility: hidden; }
+  .crew-gallery .crew-card.is-active { opacity: 1; visibility: visible; }
+}
+@media(max-width:600px) and (prefers-reduced-motion:reduce) {
+  .crew-gallery .crew-card { transition: none; }
+}
