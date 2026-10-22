@@ -730,3 +730,9 @@ body:has(#story-dialog[open]) { overflow: hidden; }
 @media(max-width:600px) and (prefers-reduced-motion:reduce) {
   .crew-gallery .crew-card { transition: none; }
 }
+
+/* Two confirmed partners; trim transparent logo margins in its display frame. */
+.partners .partner-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 900px; }
+.partner-pcc-mark { display: block; position: relative; width: min(100%,300px); aspect-ratio: 394 / 217; overflow: hidden; }
+.partner-pcc-mark img { position: absolute; max-width: none; width: 190.102%; height: auto; left: -45.178%; top: -58.065%; }
+@media(max-width:650px) { .partners .partner-grid { grid-template-columns: 1fr; } }
