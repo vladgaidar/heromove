@@ -456,3 +456,187 @@ footer > span {
   .story-grid .animal-story { grid-template-columns: minmax(0, 1fr); }
   .animal-story .animal-photo { margin-inline: 0; }
 }
+
+/* Personal memories share the first story width and left-aligned prose. */
+.story-grid .memory-story {
+  width: 100%;
+  max-width: 850px;
+  min-width: 0;
+  margin-inline: auto;
+}
+.story-grid .memory-story h3 {
+  text-align: left;
+  text-transform: uppercase;
+  font-size: clamp(2.4rem, 4.5vw, 4.6rem);
+  line-height: 1.05;
+  overflow-wrap: break-word;
+}
+.memory-text {
+  max-width: 850px;
+  margin: 28px auto 0;
+  text-align: left;
+}
+.story-grid .memory-text p {
+  max-width: none;
+  font-size: 1.125rem;
+  line-height: 1.75;
+  margin: 0 0 1.2em;
+}
+.story-grid .memory-author {
+  max-width: none;
+  text-align: right;
+  font-family: var(--accent);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 28px 0 0;
+  color: var(--maroon);
+}
+@media(max-width:600px) {
+  .story-grid .memory-text p { font-size: 1.0625rem; }
+}
+
+/* October content and contact update. */
+.origin { display: block; max-width: none; width: 100%; }
+.origin-copy > p:not(.eyebrow) { max-width: none; font-size: 1.125rem; }
+.story-grid .flight-story, .story-grid .memory-story, .memory-text { max-width: none; width: 100%; }
+.last-flight { margin-top: 70px; }
+.last-flight h3 { font: 800 clamp(2.8rem,5vw,5rem)/1.05 var(--display); margin: 0 0 28px; }
+.last-flight p { font-size: 1.125rem; line-height: 1.75; }
+.crew-gallery { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 20px; margin: 36px 0; align-items: start; }
+.story-document-photo { display: block; max-width: 100%; height: auto; margin: 32px auto 0; }
+.crew-gallery img { width: 100%; margin: 0; }
+.keepsake-photo { display: block; width: min(100%,420px); height: auto; margin: 32px auto; }
+.partners-intro { max-width: 1100px; }
+.contact .contact-copy > .contact-invitation { font-size: clamp(1.125rem,1.6vw,1.5rem); line-height: 1.65; margin-top: 0; }
+.contact .contact-copy .button { margin: 24px 0 0; cursor: pointer; }
+.contact-list .contact-channel { justify-content: flex-start; border: 0; padding: 0; font-size: clamp(1.8rem,3.6vw,3.6rem); overflow-wrap: anywhere; }
+.instagram-link { gap: 14px; align-items: center; color: var(--off); }
+.instagram-link svg { width: 36px; height: 36px; flex-shrink: 0; }
+#story-dialog { border: 0; background: var(--sand); color: var(--off); width: min(620px,calc(100% - 32px)); max-height: calc(100dvh - 32px); padding: 40px; }
+#story-dialog::backdrop { background: #0009; }
+#story-form-title { font: 800 clamp(2rem,5vw,3rem)/1.05 var(--display); text-transform: uppercase; padding-right: 20px; margin: 0 0 28px; }
+.dialog-close { position: absolute; top: 8px; right: 12px; width: 40px; height: 40px; background: none; border: 0; cursor: pointer; font-size: 30px; }
+#story-form { display: grid; gap: 10px; }
+#story-form label { margin-top: 8px; }
+#story-form input, #story-form textarea { width: 100%; min-width: 0; border: 1px solid #2c2a2b66; padding: 12px; font: inherit; background: #fff; color: var(--off); border-radius: 0; }
+#story-form textarea { resize: vertical; }
+#story-form .button { background: var(--maroon); color: white; justify-content: center; cursor: pointer; }
+#story-form .button:disabled { opacity: .6; cursor: wait; }
+#form-status { margin: 4px 0 0; font-size: .9rem; }
+body:has(#story-dialog[open]) { overflow: hidden; }
+@media(min-width:901px) {
+  .hero-static-art { width: 117%; right: 0; left: auto; -webkit-mask-image: none; mask-image: none; }
+  .hero.hero-static { padding-top: var(--hero-copy-top, 60px); }
+}
+@media(max-width:600px) {
+  .crew-gallery { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  #story-dialog { padding: 32px 20px 20px; }
+  .last-flight p, .origin-copy > p:not(.eyebrow) { font-size: 1.0625rem; }
+}
+
+@media(min-width:901px) {
+  .hero-static .lead { max-width: min(43vw, 760px); margin-left: 0; }
+}
+
+/* The keepsake sits within the story; portraits form a separate scrolling row. */
+.last-flight-copy { display: flow-root; }
+.last-flight-copy .keepsake-photo {
+  float: right;
+  width: 36%;
+  max-width: 420px;
+  height: auto;
+  margin: 0 0 24px clamp(24px,4vw,56px);
+}
+.last-flight-copy > p:first-of-type { margin-top: 0; }
+.crew-carousel { clear: both; margin-top: 40px; min-width: 0; }
+.crew-controls { display: flex; justify-content: flex-end; gap: 12px; margin-bottom: 16px; }
+.crew-controls button {
+  width: 48px; height: 48px; border: 1px solid var(--off);
+  background: transparent; color: var(--off); font-size: 24px; cursor: pointer;
+}
+.crew-controls button:disabled { opacity: .3; cursor: default; }
+.crew-controls button:focus-visible, .crew-gallery:focus-visible { outline: 2px solid var(--maroon); outline-offset: 4px; }
+.crew-gallery {
+  display: flex; gap: 24px; overflow-x: auto; margin: 0;
+  padding-bottom: 16px; scroll-snap-type: x mandatory;
+  scrollbar-color: var(--maroon) var(--sand);
+}
+.crew-gallery .story-document-photo {
+  flex: 0 0 29%; width: 29%; max-width: none;
+  height: 380px; object-fit: contain; object-position: center;
+  background: #f5f3f1; scroll-snap-align: start; margin: 0;
+}
+@media(max-width:600px) {
+  .last-flight-copy .keepsake-photo { float: none; width: min(100%,340px); margin: 0 auto 28px; }
+  .crew-gallery .story-document-photo { flex-basis: 78%; width: 78%; height: 340px; }
+}
+
+
+/* Portrait carousel with a centered active photograph. */
+.crew-carousel { position: relative; padding: 32px 0 20px; border-top: 1px solid #2c2a2b26; }
+.crew-controls { position: absolute; inset: 50% -24px auto; transform: translateY(-50%); justify-content: space-between; z-index: 1; pointer-events: none; }
+.crew-controls button { pointer-events: auto; border-radius: 50%; background: var(--white); border-color: #2c2a2b22; box-shadow: 0 4px 18px #0001; width: 52px; height: 52px; transition: background .2s, color .2s; }
+.crew-controls button:hover:not(:disabled) { background: var(--maroon); color: white; }
+.crew-gallery { --card-width: 38%; padding: 10px calc((100% - var(--card-width))/2) 16px; gap: 28px; scrollbar-width: none; align-items: center; }
+.crew-gallery::-webkit-scrollbar { display: none; }
+.crew-gallery .story-document-photo { flex: 0 0 auto; width: calc(var(--crew-viewport, 1000px) * .38); height: clamp(300px,34vw,460px); scroll-snap-align: center; background: transparent; opacity: .5; transform: scale(.92); transition: opacity .25s, transform .25s; }
+.crew-gallery .story-document-photo.is-active { opacity: 1; transform: scale(1); }
+.crew-pagination { display: flex; justify-content: center; align-items: center; gap: 6px; margin-top: 12px; }
+.crew-dot { width: 32px; height: 32px; border: 0; padding: 0; background: transparent; cursor: pointer; display: grid; place-items: center; }
+.crew-dot::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: #2c2a2b44; transition: width .2s; }
+.crew-dot[aria-current="true"]::before { width: 24px; background: var(--maroon); border-radius: 4px; }
+.crew-dot:focus-visible { outline: 2px solid var(--maroon); }
+@media(max-width:600px) {
+ .crew-gallery { --card-width: 78%; gap: 16px; }
+ .crew-gallery .story-document-photo { width: calc(var(--crew-viewport, 350px) * .78); height: 340px; }
+ .crew-controls { left: -12px; right: -12px; }
+ .crew-controls button { width: 42px; height: 42px; }
+}
+@media(prefers-reduced-motion:reduce) { .crew-gallery img, .crew-controls button, .crew-dot::before { transition: none; } }
+
+/* Compact the transition from the introduction to the memorial year. */
+.origin { padding-bottom: 40px; }
+.origin-copy > p:last-child { margin-bottom: 0; }
+.hero-story { padding-top: 40px; }
+
+/* Book-style prose on screens wide enough for comfortable word spacing. */
+@media(min-width:768px) {
+  .origin-copy > p,
+  .biography-copy > p:not(.dates),
+  .last-flight-copy > p,
+  .flight-story p,
+  .animal-copy > p,
+  .memory-text > p {
+    text-align: justify;
+    text-align-last: left;
+    hyphens: auto;
+  }
+}
+
+/* Five visible portraits rotate around the emphasized central card. */
+.crew-gallery {
+  display: block; position: relative; overflow: hidden; padding: 0;
+  height: clamp(230px, 29vw, 420px); touch-action: pan-y;
+}
+.crew-card {
+  position: absolute; top: 18px; left: calc(var(--slot) * 20%);
+  width: 20%; padding: 0 8px; border: 0; background: transparent;
+  cursor: pointer; transform: scale(.88); opacity: .65;
+  transition: left .45s ease, transform .45s ease, opacity .3s;
+}
+.crew-card.is-active { transform: scale(1); opacity: 1; z-index: 1; }
+.crew-gallery .crew-card .story-document-photo {
+  width: 100%; height: clamp(140px, 22vw, 320px); margin: 0;
+  object-fit: contain; opacity: 1; transform: none; background: transparent;
+}
+.crew-name { display: block; margin-top: 14px; font-family: var(--display); font-size: clamp(1rem, 1.9vw, 1.6rem); line-height: 1.1; }
+.crew-card.is-active .crew-name { color: var(--maroon); }
+.crew-card:focus-visible { outline: 2px solid var(--maroon); outline-offset: -2px; }
+.crew-controls { top: auto; bottom: -8px; left: 0; right: 0; transform: none; }
+@media(max-width:600px) {
+  .crew-card { padding: 0 2px; }
+  .crew-gallery { height: 210px; }
+  .crew-gallery .crew-card .story-document-photo { height: 110px; }
+  .crew-name { font-size: .85rem; overflow-wrap: anywhere; margin-top: 8px; }
+}
+@media(prefers-reduced-motion:reduce) { .crew-card { transition: none; } }
