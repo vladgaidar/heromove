@@ -21,7 +21,7 @@ footer{padding:85px 6vw 45px;display:grid;grid-template-columns:1fr 2fr 1fr;alig
 .topbar nav a,footer nav a{transition:color .2s ease}
 .topbar nav a:hover,footer nav a:hover{color:var(--maroon)}
 .button:hover{background:var(--maroon);color:white;transform:translateY(-3px);box-shadow:0 8px 20px #67000118}
-.button:hover span,.contact-list a:hover span{transform:translate(3px,-3px)}
+.button:hover span{transform:translate(3px,-3px)}
 .contact-list a:hover{color:var(--maroon)}
 .button:active{transform:translateY(0)}
 .year-button[aria-expanded=true] span{transform:rotate(180deg)}
