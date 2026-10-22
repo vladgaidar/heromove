@@ -640,3 +640,71 @@ body:has(#story-dialog[open]) { overflow: hidden; }
   .crew-name { font-size: .85rem; overflow-wrap: anywhere; margin-top: 8px; }
 }
 @media(prefers-reduced-motion:reduce) { .crew-card { transition: none; } }
+
+/* Full-width invitation with a centered action and a compact contact row. */
+.contact { display: block; padding: clamp(48px,6vw,90px) max(6vw,calc((100vw - 1280px)/2)) 44px; }
+.contact .contact-copy { width: 100%; text-align: center; }
+.contact .contact-copy > .contact-invitation {
+  max-width: none; font-size: clamp(1.35rem,2.7vw,2.6rem);
+  line-height: 1.25; text-align: justify; text-align-last: left; margin: 0;
+}
+.contact .contact-copy .button {
+  display: inline-flex; justify-content: center; margin: 42px auto 0;
+  width: min(100%,440px); min-height: 100px; padding: 24px;
+  font-size: 1.05rem;
+}
+.contact .contact-list {
+  display: grid; grid-template-columns: 1fr 1.9fr; gap: 36px;
+  align-items: center; border: 0; margin-top: 84px;
+}
+.contact-list > div:last-child { display: grid; grid-template-columns: 1.15fr 1fr; gap: 36px; align-items: center; }
+.contact-list .contact-channel { font-size: clamp(1.8rem,2.8vw,3rem); white-space: nowrap; }
+.contact-list .instagram-link { gap: 10px; }
+.contact-list .instagram-link svg { width: 28px; height: 28px; }
+.contact .contact-list p { margin: 0; font-size: .875rem; line-height: 1.6; }
+@media(max-width:900px) {
+  .contact .contact-list { grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 52px; }
+  .contact-list > div:last-child { display: block; }
+  .contact .contact-list p { margin-top: 12px; }
+  .contact-list .contact-channel { font-size: clamp(1.5rem,3.5vw,2.2rem); }
+}
+@media(max-width:600px) {
+  .contact .contact-copy > .contact-invitation { text-align: left; line-height: 1.45; }
+  .contact .contact-copy .button { margin-top: 28px; min-height: 72px; }
+  .contact .contact-list { grid-template-columns: 1fr; gap: 28px; }
+  .contact-list .contact-channel { font-size: 2rem; }
+}
+
+/* Keep the phone on the same center axis as the invitation button. */
+@media(min-width:901px) {
+  .contact .contact-list { grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+  .contact-list > div:last-child { display: contents; }
+  .contact-list .contact-phone { justify-self: center; }
+  .contact .contact-list p { justify-self: end; text-align: left; }
+}
+
+/* Mobile contact hierarchy, seamless footer and readable portrait carousel. */
+@media(max-width:600px) {
+  .contact { padding-bottom: 20px; border-bottom: 0; }
+  .contact .contact-list { text-align: center; gap: 32px; margin-top: 40px; }
+  .contact-list .instagram-link { justify-content: center; font-size: 2.6rem; gap: 12px; }
+  .contact-list .instagram-link svg { width: 36px; height: 36px; }
+  .contact-list .contact-phone { justify-content: center; font-size: 1.8rem; }
+  .contact .contact-list p { margin-top: 6px; text-align: center; }
+  footer { border: 0; padding: 0; }
+  footer .journey-art { height: 260px; }
+  footer nav {
+    align-self: start; margin: 12px 0 0; padding: 0 5vw;
+    background: none; color: var(--off); text-shadow: none;
+    gap: 0 18px; font-size: 1.25rem;
+  }
+  footer nav a { text-shadow: none; }
+  .crew-carousel { margin-top: 24px; padding-top: 20px; padding-bottom: 12px; }
+  .crew-gallery { height: 350px; }
+  .crew-card { width: 72%; left: calc(14% + (var(--slot) - 2) * 78%); top: 4px; padding: 0 4px; }
+  .crew-gallery .crew-card .story-document-photo { height: 280px; }
+  .crew-name { font-size: 1.3rem; margin-top: 12px; overflow-wrap: normal; }
+  .crew-pagination { margin-top: 4px; }
+  .crew-controls { bottom: -2px; }
+  .last-flight + .flight-photo { margin-top: 40px; }
+}

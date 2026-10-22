@@ -64,7 +64,7 @@ function positionHeroCopy() {
   hero.style.minHeight = requiredHeight + 'px';
   const scale = Math.max(art.clientWidth / 1672, art.clientHeight / 941);
   const knightTop = hero.clientHeight - (941 - 610) * scale;
-  hero.style.setProperty('--hero-copy-top', Math.max(24, knightTop - copyHeight - 12) + 'px');
+  hero.style.setProperty('--hero-copy-top', Math.max(24, knightTop - copyHeight - 57) + 'px');
 }
 
 window.addEventListener('resize', positionHeroCopy);
