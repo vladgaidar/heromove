@@ -113,7 +113,7 @@ const crewCards = [...crewGallery.querySelectorAll('.crew-card')];
 const crewPagination = document.createElement('div');
 crewPagination.className = 'crew-pagination';
 crewPagination.setAttribute('aria-label', 'Вибір портрета');
-let crewIndex = 2;
+let crewIndex = 0;
 let crewSuppressClickUntil = 0;
 const crewDots = crewCards.map((card, index) => {
   const dot = document.createElement('button');
@@ -138,6 +138,8 @@ function showCrew(index) {
     // A wrapping portrait must not animate across and cover the other portraits.
     if (wraps) card.style.transition = 'none';
     card.style.setProperty('--slot', slot);
+    card.classList.toggle('is-outside', slot > 4);
+    card.tabIndex = slot > 4 ? -1 : 0;
     if (wraps) { void card.offsetWidth; card.style.removeProperty('transition'); }
     card.classList.toggle('is-active', i === crewIndex);
     card.setAttribute('aria-pressed', String(i === crewIndex));
