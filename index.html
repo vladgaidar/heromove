@@ -2,6 +2,16 @@
 <html lang="uk">
 <head>
   <meta charset="utf-8">
+  <script>
+    // Discard incoming anchors before the browser can jump to a section.
+    history.scrollRestoration = 'manual';
+    if (location.hash) {
+      history.replaceState(history.state, '', location.pathname + location.search);
+    }
+    window.addEventListener('pageshow', () => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    });
+  </script>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#dcd7d4">
   <meta name="description" content="Хід Героя — шаховий турнір пам’яті полеглих Героїв України.">
