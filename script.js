@@ -1,11 +1,20 @@
 const menu=document.querySelector('.menu');
 const nav=document.querySelector('#nav');
-menu.addEventListener('click',()=>{const open=menu.getAttribute('aria-expanded')==='true';menu.setAttribute('aria-expanded',String(!open));nav.classList.toggle('open',!open)});
-nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menu.setAttribute('aria-expanded','false')}));
-const yearButton=document.querySelector('.year-button');
-const yearList=document.querySelector('.year-list');
-yearButton.addEventListener('click',()=>{const open=yearButton.getAttribute('aria-expanded')==='true';yearButton.setAttribute('aria-expanded',String(!open));yearList.classList.toggle('open',!open)});
-
+const triggers=[...nav.querySelectorAll('.year-button')];
+function setDropdown(button, open) {
+  button.setAttribute('aria-expanded',String(open));
+  document.getElementById(button.getAttribute('aria-controls')).classList.toggle('open',open);
+}
+menu.onclick=()=>{
+  const open=menu.getAttribute('aria-expanded')!=='true';
+  closeNavigation();
+  menu.setAttribute('aria-expanded',String(open));
+  nav.classList.toggle('open',open);
+};
+triggers.forEach(button=>button.onclick=()=>{
+  const open=button.getAttribute('aria-expanded')!=='true';
+  triggers.forEach(other=>setDropdown(other,other===button && open));
+});
 const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
 const revealTargets = document.querySelectorAll('.origin-copy, .origin-photo, .year-title, .story-heading > div, .wide-photo, .story-grid article, .final-story, .more-stories, .partners > .eyebrow, .partners > h2, .partners-intro, .partner-grid > div, .contact > div');
 let revealObserver;
@@ -31,16 +40,15 @@ configureMotion();
 motionPreference.addEventListener('change', configureMotion);
 function closeNavigation() {
   nav.classList.remove('open');
-  menu.setAttribute('aria-expanded', 'false');
-  yearList.classList.remove('open');
-  yearButton.setAttribute('aria-expanded', 'false');
+  menu.setAttribute('aria-expanded','false');
+  triggers.forEach(button=>setDropdown(button,false));
 }
 nav.querySelectorAll('a').forEach(link => link.addEventListener('click', closeNavigation));
 document.addEventListener('keydown', event => {
   if (event.key !== 'Escape') return;
-  const focusTarget = yearList.classList.contains('open') ? yearButton : nav.classList.contains('open') ? menu : null;
-  closeNavigation();
-  focusTarget?.focus();
+  const active=triggers.find(button=>button.getAttribute('aria-expanded')==='true');
+  if(active){setDropdown(active,false);active.focus();}
+  else if(nav.classList.contains('open')){closeNavigation();menu.focus();}
 });
 document.addEventListener('click', event => {
   if (!event.target.closest('.topbar')) closeNavigation();

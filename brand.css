@@ -752,3 +752,13 @@ body:has(#story-dialog[open]) { overflow: hidden; }
 @media(max-width:600px) {
   .crew-gallery { height: calc((100vw - 12vw) * .72 * 4 / 3 + 76px); }
 }
+.gallery-nav summary { cursor:pointer; list-style:none; }
+.gallery-nav summary::-webkit-details-marker { display:none; }
+.gallery-nav[open] .year-list { display:block; }
+/* Shared navigation rhythm and matching year selectors. */
+.topbar #nav > a,.topbar #nav .year-button{display:inline-flex;align-items:center;min-height:44px;margin:0;padding:0;font:800 1.3rem/1 var(--display);letter-spacing:0;text-transform:uppercase;color:var(--off)}
+.topbar #nav .year-list{top:calc(100% + 4px);padding:6px;width:max-content;min-width:170px;border:1px solid #2c2a2b25;border-top:2px solid var(--maroon);background:#faf8f6;box-shadow:0 6px 14px #30282012}
+.topbar #nav .year-list a{display:block;padding:12px 14px;font:700 1.15rem/1.2 var(--display)}
+.topbar #nav .year-list a:is(:hover,:focus-visible){color:var(--maroon);background:#eee8e3}
+@media(min-width:901px){.topbar #nav{gap:clamp(18px,2.4vw,40px)}}
+@media(max-width:900px){.topbar #nav{gap:4px}.topbar #nav .year-list{position:static;box-shadow:none}}
