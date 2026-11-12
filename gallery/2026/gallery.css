@@ -31,3 +31,11 @@ dialog.expanded .viewer-bar{inset:0 0 auto}dialog.expanded #count{bottom:4px;lef
 .album-footer>a:last-child{justify-self:end}
 .album-downloads{display:flex;flex-wrap:wrap;gap:10px}
 @media(max-width:650px){.album-footer{grid-template-columns:1fr;justify-items:center}.album-footer>a:last-child{justify-self:center}}
+@media(max-width:650px){
+  .intro .album-downloads{display:grid;width:100%;gap:0;border-top:1px solid #dcd7d4}
+  .album-downloads .archive{position:relative;display:block;padding:14px 52px 14px 4px;background:white;color:var(--off);border-bottom:1px solid #dcd7d4;line-height:1.25}
+  .album-downloads .archive[hidden]{display:none}
+  .album-downloads .archive small{margin-top:5px;font-size:.8rem;color:#565151}
+  .archive-arrow{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:#f2eeeb;color:var(--maroon)}
+  .album-downloads .archive:is(:focus-visible,:active){background:#f5f1ed}
+}
